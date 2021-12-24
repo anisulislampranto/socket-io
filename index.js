@@ -28,9 +28,14 @@ io.on('connection', (socket) => {
     // })
 
     // custom event recieve data from client 
-    socket.on("myEvent", (text)=>{
-        console.log(text);
-    })
+    // socket.on("myEvent", (text)=>{
+    //     console.log(text);
+    // })
+
+    // boradcast 
+    // boradcast to everyone 
+    io.sockets.emit("myEvent", "helle peter")
+
 
     socket.on('disconnect', () => {
       console.log('user disconnected');

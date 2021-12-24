@@ -42,10 +42,16 @@
         // }
 
         // custom event send data to server
-        const send = () => {
-            const inputName = document.getElementById('input').value;
-            socket.emit("myEvent", inputName)
-        }
+        // const send = () => {
+        //     const inputName = document.getElementById('input').value;
+        //     socket.emit("myEvent", inputName)
+        // }
+
+        // broadcast ot evryone
+        socket.on("myEvent", (text)=>{
+            document.getElementById('messages').innerText = text;
+        })
+
     </script>
   </body>
 </html>
