@@ -17,10 +17,14 @@ io.on('connection', (socket) => {
     // }, 10000)
 
     // custom Event 
-    setTimeout(()=>{
-        socket.emit("myEvent",'A text Server to client')
-    }, 10000)
+    // setTimeout(()=>{
+    //     socket.emit("myEvent",'A text Server to client')
+    // }, 10000)
 
+    // recieve data from client side 
+    socket.on("message", (text)=>{
+        console.log(text);
+    })
 
     socket.on('disconnect', () => {
       console.log('user disconnected');
