@@ -25,21 +25,27 @@
     <script>
         let socket = io();
 
-        // reserved event 
+        // reserved event receive from server
         // socket.on('message', (text)=>{
         //     document.getElementById('messages').innerText = text;
         // })
 
-        // custom event receive 
+        // custom event receive from server
         // socket.on("myEvent", (text)=>{
         //     document.getElementById('messages').innerText = text;
         // })
 
-        const send = () =>{
-            const inputName = document.getElementById('input').value;
-            socket.send(inputName);
-        }
+        // reserved event send data to server
+        // const send = () =>{
+        //     const inputName = document.getElementById('input').value;
+        //     socket.send(inputName);
+        // }
 
+        // custom event send data to server
+        const send = () => {
+            const inputName = document.getElementById('input').value;
+            socket.emit("myEvent", inputName)
+        }
     </script>
   </body>
 </html>

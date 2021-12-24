@@ -12,17 +12,23 @@ const port = process.env.PORT || 4040
 io.on('connection', (socket) => {
     console.log('a user connected');
 
+    // reserved event send data to client 
     // setTimeout(()=>{
     //     socket.send('A text Server to client')
     // }, 10000)
 
-    // custom Event 
+    // custom Event send data to client
     // setTimeout(()=>{
     //     socket.emit("myEvent",'A text Server to client')
     // }, 10000)
 
-    // recieve data from client side 
-    socket.on("message", (text)=>{
+    // reserved event recieve data from client  
+    // socket.on("message", (text)=>{
+    //     console.log(text);
+    // })
+
+    // custom event recieve data from client 
+    socket.on("myEvent", (text)=>{
         console.log(text);
     })
 
