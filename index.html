@@ -25,6 +25,11 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
         let socket = io();
+
+        socket.on('message', (text)=>{
+            document.getElementById('messages').innerText = text;
+        })
+
     </script>
   </body>
 </html>
