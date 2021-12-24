@@ -26,7 +26,13 @@
     <script>
         let socket = io();
 
-        socket.on('message', (text)=>{
+        // reserved event 
+        // socket.on('message', (text)=>{
+        //     document.getElementById('messages').innerText = text;
+        // })
+
+        // custom event receive 
+        socket.on("myEvent", (text)=>{
             document.getElementById('messages').innerText = text;
         })
 

@@ -12,8 +12,13 @@ const port = process.env.PORT || 4040
 io.on('connection', (socket) => {
     console.log('a user connected');
 
+    // setTimeout(()=>{
+    //     socket.send('A text Server to client')
+    // }, 10000)
+
+    // custom Event 
     setTimeout(()=>{
-        socket.send('A text Server to client')
+        socket.emit("myEvent",'A text Server to client')
     }, 10000)
 
 
