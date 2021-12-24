@@ -23,7 +23,18 @@
 
     <script src="/socket.io/socket.io.js"></script>
     <script>
-        let socket = io();
+        // name space 
+        let socket =io("/buy");
+        socket.on("myEvent", (text)=> {
+            document.getElementById("messages").innerHTML = text;
+        })
+        
+        let socket =io("/sell");
+        socket.on("myEvent", (text)=> {
+            document.getElementById("messages").innerHTML = text;
+        })
+
+        // let socket = io();
 
         // reserved event receive from server
         // socket.on('message', (text)=>{
@@ -47,10 +58,11 @@
         //     socket.emit("myEvent", inputName)
         // }
 
-        // broadcast ot evryone
-        socket.on("myEvent", (text)=>{
-            document.getElementById('messages').innerText = text;
-        })
+        // broadcast ot everyone
+        // socket.on("myEvent", (text)=>{
+        //     document.getElementById('messages').innerText = text;
+        // })
+
 
     </script>
   </body>

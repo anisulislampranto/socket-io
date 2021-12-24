@@ -9,8 +9,9 @@ require('dotenv').config()
 
 const port = process.env.PORT || 4040
 
-io.on('connection', (socket) => {
-    console.log('a user connected');
+// conncection for all 
+// io.on('connection', (socket) => {
+//     console.log('a user connected');
 
     // reserved event send data to client 
     // setTimeout(()=>{
@@ -34,13 +35,28 @@ io.on('connection', (socket) => {
 
     // boradcast 
     // boradcast to everyone 
-    io.sockets.emit("myEvent", "helle peter")
+    // io.sockets.emit("myEvent", "helle peter")
+
+    // socket.on('disconnect', () => {
+    //   console.log('user disconnected');
+    // });
+//   });
 
 
-    socket.on('disconnect', () => {
-      console.log('user disconnected');
-    });
-  });
+  // nameSpace
+  let buyNsp = io.of("/buy")
+  buyNsp.on("connection", (socket)=>{
+    console.log("user connected buy");
+    buyNsp.emit("myEvent", "hello Matrix buy")
+  })
+
+  let sellNsp = io.of("/sell")
+  sellNsp.on("connection", (socket)=> {
+    console.log("user connected sell");
+    sellNsp.emit("myEvent", "hello matrix sell")
+  })
+
+
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
